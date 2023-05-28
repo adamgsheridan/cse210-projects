@@ -27,7 +27,8 @@ class Program {
                 // Creates a variable from the Write class.
                 Write write = new Write();
 
-                // Creates a variable from the Entry class using the WriteEntry Method from the Write class.
+                // Creates a variable from the Entry class using the 
+                // WriteEntry Method from the Write class.
                 Entry entry = write.WriteEntry();
 
                 // This adds the entries to a list of multiple entries.
@@ -36,7 +37,8 @@ class Program {
             // Performs necessary things to display the journal.
             else if (choice == "2")
             {
-                // Writes what is in the Journal array. Without the override the below code will show the journal's address.
+                // Writes what is in the Journal array. Without the override 
+                // the below code will show the journal's address.
                 Console.WriteLine(journal);
             }
             // Loads whats in the file into the journal.
@@ -54,13 +56,21 @@ class Program {
             // Saves whats in the journal into a document.
             else if (choice == "4")
             {
-                // Prompt for the filename
+                // Prompt for the filename.
                 string filename = prompt.GetFilename();
 
+                // Creates a variable from the FileManager class.
                 FileManager fileManager = new FileManager();
+
+                // Calls the SaveJournal method from the FileManager to 
+                // save the user's journal into the journal.txt file.
                 fileManager.SaveJournal(journal, "journal.txt");
             }
+
+            // Displays the greeting from the beginning.
             prompt.Greeting();
+
+            // Asks the user for another prompt.
             choice = prompt.GetInput();
         }
     }
@@ -71,7 +81,10 @@ class Journal {
     // Override the parent class's implementation of the ToString.
     public override string ToString()
     {
+        // Makes the journalString string.
         string journalString = "";
+
+        // Adds each journal entry to the journal.
         foreach (Entry entry in this._entries)
         {
             journalString += entry.ToString();
@@ -84,8 +97,11 @@ public class Entry {
     public string _text;
     public string _prompt;
     public string _date;
+
+    // Overrides the parent class's implementation of the ToString.
     public override string ToString()
     {
+        // Returns the date, prompt, and journal entries in that order.
         return "Date: " + this._date + " - Prompt: " + this._prompt + "\n" + this._text + "\n\n";
     }
 }
