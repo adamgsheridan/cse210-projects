@@ -1,39 +1,33 @@
-class Word {
-    public int GetRandomNumber()
+class Word
+{
+    private string _word;
+    private bool _isHidden = false;
+    public Word(string word)
     {
-        Scripture scripture = new Scripture();
-        string[] script = scripture.SortScripture();
-        Random rnd = new Random();
-        int number = rnd.Next(script.Length);
-        return number;
+        _word = word;
     }
-    public string MakeHidden()
+    public string GetWord()
     {
-        Scripture scripture = new Scripture();
-        string[] WholeScripture = scripture.SortScripture();
-        Word word = new Word();
-        int RandomNumber = word.GetRandomNumber();
-        String[] HiddenWord = new String[20];
-        int counter = 0;
-        for (int i = 0; i <= RandomNumber; i++)
-        {
-            if (i == RandomNumber)
-            {
-                //Console.Write(WholeScripture[i]);
-                foreach (var whole in WholeScripture[i])
-                {
-                    counter++;
-                }
-            }
-        }
-        //Console.Write(counter);
+        if (_isHidden)
+            return MakeHidden();
+        return _word;
+    }
+    public void Hide()
+    {
+        _isHidden = true;
+    }
+    public bool IsHidden()
+    {
+        return _isHidden;
+    }
+    private string MakeHidden()
+    {
         string letters = "";
-        for (int i = 0; i < counter; i++)
+        foreach (char letter in _word)
         {
             letters = letters + ("_");
         }
-        //Console.Write(letters);
+
         return letters;
     }
-
 }

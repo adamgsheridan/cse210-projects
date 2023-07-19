@@ -1,12 +1,16 @@
 public class PromptContinue
 {
+    private string _direction;
     public void DisplayPrompt()
     {
         Console.WriteLine("Press enter to continue or type 'quit' to finish:");
+        Console.WriteLine();
+        _direction = Console.ReadLine();
+        Console.WriteLine();
     }
-    public string GetDirection()
+
+    public bool ShouldContinue()
     {
-        string direction = Console.ReadLine();
-        return direction;
+        return _direction != "quit";
     }
 }
